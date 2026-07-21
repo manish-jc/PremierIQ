@@ -10,6 +10,8 @@ class RAGPipeline:
 
     def __init__(self):
 
+        print("Loading PremierIQ Pipeline...")
+
         self.retriever = FootballRetriever()
         self.gemini = GeminiClient()
 
@@ -17,30 +19,24 @@ class RAGPipeline:
         self.extractor = EntityExtractor()
         self.context_builder = ContextBuilder()
 
+        print("Pipeline Loaded Successfully.\n")
+
     # ---------------------------------------
     # Build Prompt
     # ---------------------------------------
 
     def build_prompt(
-    self,
-    context,
-    question
-):
+        self,
+        context,
+        question
+    ):
+
         return f"""
 You are PremierIQ, an AI assistant specializing in the English Premier League.
 
-Your job is to answer football questions using ONLY the provided context.
+Answer ONLY using the provided context.
 
-Guidelines:
-
-- Write naturally, like a football analyst.
-- Never mention Python, JSON, dictionaries or DataFrames.
-- Explain statistics instead of listing raw values.
-- If ranking information is provided, present it as a numbered ranking.
-- If comparison information is provided, compare both teams or players naturally.
-- If season information is provided, summarize the season.
-- Keep answers concise but informative.
-- If the context is insufficient, reply:
+If the context is insufficient, reply:
 "I couldn't find enough information in my knowledge base."
 
 Context:
@@ -61,15 +57,22 @@ Answer:
         question
     ):
 
-        # -----------------------------
-        # Route Question
-        # -----------------------------
+        print("=" * 80)
+        print("QUESTION :", question)
+        print("=" * 80)
+
+        # ---------------------------------------------------
+        # Step 1 : Route
+        # ---------------------------------------------------
 
         route_info = self.router.route(question)
 
-        # -----------------------------
-        # Build Analytics Context
-        # -----------------------------
+        print("\nROUTER OUTPUT")
+        print(route_info)
+
+        # ---------------------------------------------------
+        # Step 2 : Analytics Context
+        # ---------------------------------------------------
 
         context = self.context_builder.build(
 
@@ -81,11 +84,16 @@ Answer:
 
         )
 
-        # -----------------------------
-        # Analytics Response
-        # -----------------------------
+        print("\nANALYTICS CONTEXT")
+        print(context)
+
+        # ---------------------------------------------------
+        # Analytics Answer
+        # ---------------------------------------------------
 
         if context is not None:
+
+            print("\nUsing Analytics Context")
 
             prompt = self.build_prompt(
 
@@ -95,13 +103,30 @@ Answer:
 
             )
 
-            return self.gemini.generate(prompt)
+            answer = self.gemini.generate(prompt)
 
-        # -----------------------------
+            print("\nGemini Answer Generated")
+
+            return answer
+
+        # ---------------------------------------------------
         # RAG Fallback
-        # -----------------------------
+        # ---------------------------------------------------
+
+        print("\nNo Analytics Context Found")
+        print("Switching to RAG Retrieval...\n")
 
         docs = self.retriever.search(question)
+
+        print(f"Documents Retrieved : {len(docs)}")
+
+        for i, doc in enumerate(docs):
+
+            print("\n" + "-" * 80)
+            print(f"Document {i+1}")
+            print("-" * 80)
+
+            print(doc.page_content[:500])
 
         context = "\n\n".join(
 
@@ -111,6 +136,9 @@ Answer:
 
         )
 
+        print("\nFINAL CONTEXT SENT TO GEMINI")
+        print(context[:1000])
+
         prompt = self.build_prompt(
 
             context,
@@ -119,12 +147,12 @@ Answer:
 
         )
 
-        return self.gemini.generate(prompt)
+        answer = self.gemini.generate(prompt)
 
+        print("\nGemini Answer Generated")
 
-# ---------------------------------------
-# Test
-# ---------------------------------------
+        return answer
+
 
 if __name__ == "__main__":
 
@@ -136,8 +164,7 @@ if __name__ == "__main__":
 
         answer = pipeline.ask(question)
 
-        print()
-
+        print("\n")
         print("=" * 80)
-
         print(answer)
+        print("=" * 80)

@@ -43,6 +43,10 @@ class ContextBuilder:
 
         season = extractor.find_season(question)
 
+        print("\n========== CONTEXT BUILDER ==========")
+        print("Route :", route)
+        print("Season :", season)
+
         # =====================================
         # PROFILE
         # =====================================
@@ -51,21 +55,33 @@ class ContextBuilder:
 
             players = extractor.find_players(question)
 
+            print("Players Found :", players)
+
             if len(players) == 1:
 
-                return self.player_profile.get_player_profile(
+                profile = self.player_profile.get_player_profile(
                     players[0],
                     season
                 )
 
+                print("Player Profile Found :", profile is not None)
+
+                return profile
+
             clubs = extractor.find_clubs(question)
+
+            print("Clubs Found :", clubs)
 
             if len(clubs) == 1:
 
-                return self.club_profile.get_club_profile(
+                profile = self.club_profile.get_club_profile(
                     clubs[0],
                     season
                 )
+
+                print("Club Profile Found :", profile is not None)
+
+                return profile
 
             return None
 
@@ -73,61 +89,45 @@ class ContextBuilder:
         # RANKINGS
         # =====================================
 
-        elif route == "rankings":
+        if route == "rankings":
 
             ranking_type = route_info["type"]
 
             if ranking_type == "top_scorers":
+                return self.top_scorers.get_top_scorers(season)
 
-                return self.top_scorers.get_top_scorers(
-                    season=season
-                )
+            if ranking_type == "top_assists":
+                return self.top_assists.get_top_assists(season)
 
-            elif ranking_type == "top_assists":
+            if ranking_type == "goalkeepers":
+                return self.goalkeepers.get_top_goalkeepers(season)
 
-                return self.top_assists.get_top_assists(
-                    season=season
-                )
-
-            elif ranking_type == "goalkeepers":
-
-                return self.goalkeepers.get_top_goalkeepers(
-                    season=season
-                )
-
-            elif ranking_type == "clubs":
-
-                return self.club_rankings.get_club_rankings(
-                    season=season
-                )
+            if ranking_type == "clubs":
+                return self.club_rankings.get_club_rankings(season)
 
         # =====================================
         # AWARDS
         # =====================================
 
-        elif route == "awards":
+        if route == "awards":
 
-            return self.awards.get_awards(
-                season
-            )
+            return self.awards.get_awards(season)
 
         # =====================================
         # SEASON
         # =====================================
 
-        elif route == "season":
+        if route == "season":
 
             if season is not None:
 
-                return self.season_summary.get_season_summary(
-                    season
-                )
+                return self.season_summary.get_season_summary(season)
 
         # =====================================
         # COMPARISON
         # =====================================
 
-        elif route == "comparison":
+        if route == "comparison":
 
             players = extractor.find_players(question)
 
@@ -148,9 +148,5 @@ class ContextBuilder:
                     clubs[1],
                     season
                 )
-
-        # =====================================
-        # KNOWLEDGE
-        # =====================================
 
         return None

@@ -6,6 +6,7 @@ from app.api.routes.rankings import router as rankings_router
 from app.api.routes.comparisons import router as comparisons_router
 from app.api.routes.seasons import router as seasons_router
 from app.api.routes.awards import router as awards_router
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
 
@@ -29,6 +30,16 @@ PremierIQ is a Premier League Analytics and AI platform.
 
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # ---------------------------------------
 # Routers
 # ---------------------------------------

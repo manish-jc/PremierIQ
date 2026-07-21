@@ -57,29 +57,38 @@ class EntityExtractor:
 
     def find_players(self, question):
 
-        question = question.lower()
+        question = question.lower().strip()
 
-        matches = []
+        full_name_matches = []
+        surname_matches = []
 
         for player in self.players["player_name"]:
 
             if not isinstance(player, str):
                 continue
 
-            full_name = player.lower()
+            full_name = player.lower().strip()
 
-            # Exact full name
+            # Exact full-name match (highest priority)
             if full_name in question:
-                matches.append(player)
+
+                full_name_matches.append(player)
+
                 continue
 
-            # Last name
-            last_name = full_name.split()[-1]
+            # Surname match
+            surname = full_name.split()[-1]
 
-            if len(last_name) >= 4 and last_name in question:
-                matches.append(player)
+            if len(surname) >= 4 and surname in question:
 
-        return list(dict.fromkeys(matches))
+                surname_matches.append(player)
+
+        # Prefer exact full-name matches
+        if full_name_matches:
+
+            return list(dict.fromkeys(full_name_matches))
+
+        return list(dict.fromkeys(surname_matches))
 
     # ---------------------------------------
     # Find Clubs
@@ -121,6 +130,7 @@ class EntityExtractor:
                 year = int(word)
 
                 if 1992 <= year <= 2030:
+
                     return year
 
         return None
