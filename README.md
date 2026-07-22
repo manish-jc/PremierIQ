@@ -233,7 +233,7 @@ screenshots/swagger.png
 ## Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/PremierIQ.git
+git clone https://github.com/manish-jc/PremierIQ.git
 ```
 
 ```bash
@@ -353,14 +353,11 @@ This project helped strengthen practical experience in:
 
 **Manish J C**
 
-M.Sc. Data Analytics
-
-GitHub: https://github.com/YOUR_USERNAME
+GitHub: https://github.com/manish-jc
 
 LinkedIn: https://linkedin.com/in/YOUR_PROFILE
 
 ---
 
-# ⭐ Support
 
 If you found this project interesting, consider giving it a ⭐ on GitHub.
