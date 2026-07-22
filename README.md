@@ -35,8 +35,6 @@ The platform combines structured football analytics with **Hybrid Retrieval-Augm
 - Detailed player profiles
 - Goals & assists
 - Position
-- Nationality
-- Market value
 - Club information
 
 ---
@@ -45,7 +43,6 @@ The platform combines structured football analytics with **Hybrid Retrieval-Augm
 - Club profiles
 - Squad information
 - Historical statistics
-- Season insights
 
 ---
 
