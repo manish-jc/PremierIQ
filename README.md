@@ -205,7 +205,7 @@ PremierIQ
 ## Clone Repository
 
 ```bash
-git clone https://github.com/jcmanish249-rgb/PremierIQ.git
+git clone https://github.com/manish-jc/PremierIQ.git
 ```
 
 ```bash
@@ -313,29 +313,11 @@ http://localhost:5173
 - Match Prediction
 - Player Recommendation System
 
----
 
-# 📚 What I Learned
-
-This project helped me gain practical experience in:
-
-- Retrieval-Augmented Generation (RAG)
-- FastAPI Development
-- React Frontend Development
-- REST API Design
-- FAISS Vector Search
-- Google Gemini Integration
-- Football Data Analytics
-- Full-Stack Development
-- AI Application Development
-
----
 
 # 👨‍💻 Author
 
 ## Manish J C
-
-**M.Sc. Data Analytics**
 
 GitHub: https://github.com/manish-jc
 
