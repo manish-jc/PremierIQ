@@ -1,69 +1,55 @@
 # ⚽ PremierIQ
 
-> **AI-Powered Premier League Analytics Platform using Hybrid RAG, FastAPI, React, Gemini AI and FAISS**
+> **AI-Powered Premier League Analytics Platform built with React, FastAPI, Hybrid RAG, Gemini AI & FAISS**
 
 ![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python)
-![React](https://img.shields.io/badge/React-Frontend-61DAFB?logo=react)
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?logo=fastapi)
-![Gemini](https://img.shields.io/badge/Google-Gemini_AI-4285F4?logo=google)
-![FAISS](https://img.shields.io/badge/FAISS-Vector_Search-orange)
-![RAG](https://img.shields.io/badge/Hybrid-RAG-success)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi)
+![Gemini AI](https://img.shields.io/badge/Gemini-AI-4285F4?logo=google)
+![FAISS](https://img.shields.io/badge/FAISS-Vector%20Search-orange)
+![Hybrid RAG](https://img.shields.io/badge/Hybrid-RAG-success)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
-## 📖 Overview
+# 📖 Overview
 
-PremierIQ is an AI-powered football analytics platform designed for the English Premier League.
+PremierIQ is an AI-powered football analytics platform that enables users to explore English Premier League statistics through an intelligent and interactive interface.
 
-Instead of manually searching through statistics and historical records, users can ask natural language questions and receive intelligent, data-driven responses.
-
-The application combines traditional football analytics with **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** to provide accurate and contextual answers while also supporting player analytics, club analytics, rankings, and comparisons.
+The platform combines structured football analytics with **Hybrid Retrieval-Augmented Generation (Hybrid RAG)**, allowing users to ask natural language questions, compare players, analyze clubs, and explore rankings using AI.
 
 ---
 
 # ✨ Features
 
 ### 🤖 AI Chat
-
-- Ask football questions using natural language
-- Hybrid RAG-powered responses
+- Natural language football queries
+- Hybrid RAG pipeline
 - Gemini AI integration
-- Semantic search using FAISS
-
-Example:
-
-> Who is Harry Kane?
-
-> Compare Mohamed Salah and Erling Haaland
-
-> Top scorers in 2022
+- FAISS semantic retrieval
+- Context-aware football responses
 
 ---
 
 ### 👤 Player Analytics
-
-- Player profile
-- Goals
-- Assists
+- Detailed player profiles
+- Goals & assists
 - Position
 - Nationality
-- Market Value
-- Club Information
+- Market value
+- Club information
 
 ---
 
 ### 🏆 Club Analytics
-
-- Club profile
+- Club profiles
 - Squad information
-- Season statistics
-- Historical data
+- Historical statistics
+- Season insights
 
 ---
 
 ### 📊 Rankings
-
 - Top Scorers
 - Top Assists
 - Goalkeeper Rankings
@@ -71,34 +57,31 @@ Example:
 ---
 
 ### ⚖️ Player Comparison
-
-Compare two players based on:
-
+Compare two players using:
 - Goals
 - Assists
-- Matches Played
+- Matches
 - Position
 - Club
-- Other statistics
+- Performance statistics
 
 ---
 
-### 🔍 Hybrid RAG Pipeline
-
+### 🔍 Hybrid RAG
 PremierIQ combines:
 
-- Semantic Search
-- Football Analytics Database
+- Football Analytics
 - FAISS Vector Search
+- Semantic Retrieval
 - Gemini AI
 
 to generate intelligent football insights.
 
 ---
 
-# 🏗 System Architecture
+# 🏗 Architecture
 
-```
+```text
                     React Frontend
                            │
                            ▼
@@ -127,38 +110,72 @@ to generate intelligent football insights.
 # 🛠 Tech Stack
 
 ## Frontend
-
 - React
-- React Router
-- Axios
 - Tailwind CSS
+- Axios
+- React Router
 - Lucide React
 
 ## Backend
-
-- Python
 - FastAPI
-- Uvicorn
+- Python
 - Pandas
+- Uvicorn
 
 ## AI
-
 - Google Gemini
 - Hybrid RAG
 - FAISS
 - Sentence Transformers
 
 ## Data
-
 - Premier League Dataset
 - Football Statistics
 - CSV Processing
 
 ---
 
+# 📸 Application Screenshots
+
+## 🏠 Home Page
+
+![Home](screenshots/Home.png)
+
+---
+
+## ✨ Home Page (Features & Statistics)
+
+![Home 2](screenshots/Home2.png)
+
+---
+
+## 🤖 AI Chat
+
+![AI Chat](screenshots/AI%20Chat.png)
+
+---
+
+## 📊 Rankings
+
+![Rankings](screenshots/Rankings.png)
+
+---
+
+## ⚖️ Player Comparison
+
+![Player Comparison](screenshots/Player%20Comparison.png)
+
+---
+
+## 📖 FastAPI Swagger Documentation
+
+![Swagger UI](screenshots/Swagger%20UI.png)
+
+---
+
 # 📂 Project Structure
 
-```
+```text
 PremierIQ
 │
 ├── frontend/
@@ -169,61 +186,16 @@ PremierIQ
 │
 ├── app/
 │   ├── api/
-│   ├── rag/
 │   ├── analytics/
+│   ├── rag/
 │   ├── services/
 │   └── database/
 │
 ├── data/
-│
 ├── vector_store/
-│
 ├── screenshots/
-│
 ├── requirements.txt
 └── README.md
-```
-
----
-
-# 📸 Screenshots
-
-## 🏠 Home Page
-
-```
-screenshots/home.png
-```
-
----
-
-## 🤖 AI Chat
-
-```
-screenshots/chat.png
-```
-
----
-
-## 📊 Rankings
-
-```
-screenshots/rankings.png
-```
-
----
-
-## ⚖️ Player Comparison
-
-```
-screenshots/comparison.png
-```
-
----
-
-## 📖 FastAPI Swagger
-
-```
-screenshots/swagger.png
 ```
 
 ---
@@ -233,7 +205,7 @@ screenshots/swagger.png
 ## Clone Repository
 
 ```bash
-git clone https://github.com/manish-jc/PremierIQ.git
+git clone https://github.com/jcmanish249-rgb/PremierIQ.git
 ```
 
 ```bash
@@ -242,20 +214,26 @@ cd PremierIQ
 
 ---
 
-## Backend
+## Backend Setup
+
+Create a virtual environment
 
 ```bash
 python -m venv venv
 ```
 
-```bash
-source venv/bin/activate
-```
+Activate it
 
 Windows
 
 ```bash
 venv\Scripts\activate
+```
+
+Linux / macOS
+
+```bash
+source venv/bin/activate
 ```
 
 Install dependencies
@@ -264,7 +242,7 @@ Install dependencies
 pip install -r requirements.txt
 ```
 
-Run FastAPI
+Run the backend
 
 ```bash
 uvicorn app.api.main:app --reload
@@ -284,15 +262,19 @@ http://localhost:8000/docs
 
 ---
 
-## Frontend
+## Frontend Setup
 
 ```bash
 cd frontend
 ```
 
+Install dependencies
+
 ```bash
 npm install
 ```
+
+Run the application
 
 ```bash
 npm run dev
@@ -309,10 +291,10 @@ http://localhost:5173
 # 📡 API Endpoints
 
 | Endpoint | Description |
-|----------|-------------|
+|-----------|-------------|
 | `/chat` | AI Chat |
-| `/player` | Player Profile |
-| `/club` | Club Profile |
+| `/player` | Player Analytics |
+| `/club` | Club Analytics |
 | `/rankings/top-scorers` | Top Scorers |
 | `/rankings/top-assists` | Top Assists |
 | `/rankings/goalkeepers` | Goalkeeper Rankings |
@@ -320,44 +302,47 @@ http://localhost:5173
 
 ---
 
-# 💡 Future Enhancements
+# 🎯 Future Improvements
 
-- Live Premier League Data
-- Interactive Visualizations
-- Player Recommendation Engine
+- Live Premier League API Integration
 - Conversation Memory
 - Multi-League Support
-- Match Prediction
-- Transfer Analytics
+- Interactive Visualizations
 - Team Performance Dashboard
+- Transfer Analytics
+- Match Prediction
+- Player Recommendation System
 
 ---
 
-# 🎓 Learning Outcomes
+# 📚 What I Learned
 
-This project helped strengthen practical experience in:
+This project helped me gain practical experience in:
 
 - Retrieval-Augmented Generation (RAG)
 - FastAPI Development
 - React Frontend Development
 - REST API Design
-- Vector Databases
-- FAISS Search
-- LLM Integration
+- FAISS Vector Search
+- Google Gemini Integration
 - Football Data Analytics
-- Full Stack Development
+- Full-Stack Development
+- AI Application Development
 
 ---
 
 # 👨‍💻 Author
 
-**Manish J C**
+## Manish J C
+
+**M.Sc. Data Analytics**
 
 GitHub: https://github.com/manish-jc
 
-LinkedIn: https://linkedin.com/in/YOUR_PROFILE
+LinkedIn: *(Add your LinkedIn profile URL here)*
 
 ---
 
+# ⭐ If you enjoyed this project
 
-If you found this project interesting, consider giving it a ⭐ on GitHub.
+If you found this project interesting, consider giving it a ⭐ on GitHub!
