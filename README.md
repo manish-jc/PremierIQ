@@ -321,7 +321,7 @@ http://localhost:5173
 
 GitHub: https://github.com/manish-jc
 
-LinkedIn: *(Add your LinkedIn profile URL here)*
+LinkedIn: www.linkedin.com/in/jc-manish
 
 ---
 
